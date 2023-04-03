@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
 // Middleware to parse webhook body as JSON
 
@@ -24,6 +24,7 @@ app.post('/webhook', async (req, res) => {
 });
 
 // Start server
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+app.listen(process.env.PORT || PORT, function(err){
+  if (err) console.log("Error in server setup")
+  console.log("Server listening on Port", PORT);
+})
